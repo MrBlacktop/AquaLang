@@ -17,7 +17,7 @@ interface AquaLangDatabaseDao {
     fun clear()
 
     @Query("select * from user limit 1 ")
-    fun getUser(): Flow<UserDbModel>
+    fun getUser(): UserDbModel?
 
     @Query("select * from courses")
     fun getAllCourses(): Flow<List<CourseDbModel>>

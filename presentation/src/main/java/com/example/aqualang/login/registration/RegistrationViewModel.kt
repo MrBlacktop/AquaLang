@@ -1,5 +1,6 @@
 package com.example.aqualang.login.registration
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,16 +25,26 @@ class RegistrationViewModel(private val userInteractor: UserInteractor) : ViewMo
     val user = MutableLiveData<User>()
     var password = MutableLiveData<String>()
 
+    init {
+        user.value = User()
+        password.value = ""
+    }
+
     private val uiScope = CoroutineScope(Dispatchers.Main)
 
     fun saveButtonClicked() {
         uiScope.launch {
-            val respond = userInteractor.registerUser(user.value!!, password.value!!)
-            toastText = respond.description
-            _showToast.value = true
-
-            if(respond.status)
-                _navigateToLogin.value = true
+            try {
+                val respond = userInteractor.registerUser(user.value!!, password.value!!)
+                toastText = respond.description
+                _showToast.value = true
+                if (respond.status)
+                    _navigateToLogin.value = true
+            } catch (e: Exception) {
+                Log.e("RegistrationViewModel", e.message ?: "")
+                toastText = e.message.toString()
+                _showToast.value = true
+            }
         }
     }
 
@@ -41,7 +52,7 @@ class RegistrationViewModel(private val userInteractor: UserInteractor) : ViewMo
         _navigateToLogin.value = null
     }
 
-    fun doneShowingToast(){
+    fun doneShowingToast() {
         _showToast.value = null
     }
 }

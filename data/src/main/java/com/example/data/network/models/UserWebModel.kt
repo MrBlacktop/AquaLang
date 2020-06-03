@@ -1,16 +1,21 @@
 package com.example.data.network.models
 
 import com.example.domain.models.User
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class UserWebModel(
-    val id: Int,
+    var id: Int,
+    @Json(name = "username")
     var userName: String,
-    var email: String,
+
+    @Json(name = "first_name")
     var firstName: String,
+    @Json(name = "last_name")
     var lastName: String,
-    var password: String?
+    var email: String,
+    var password: String
 )
 
 fun UserWebModel.asDomainModel(): User {
@@ -23,4 +28,5 @@ fun UserWebModel.asDomainModel(): User {
     )
 }
 
-fun User.asWebModel() = UserWebModel(id, userName, email, firstName, lastName, null)
+fun User.asWebModel(password: String) =
+    UserWebModel(id, userName, firstName, lastName,email, password)

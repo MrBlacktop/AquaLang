@@ -1,11 +1,11 @@
 package com.example.aqualang.education.coursesList
 
-import androidx.lifecycle.ViewModelProviders
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -46,11 +46,11 @@ class CoursesListFragment : Fragment() {
         coursesRecyclerView.adapter = adapter
         coursesRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        viewModel.courses.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.data = it
-            }
-        })
+//        viewModel.courses.observe(viewLifecycleOwner, Observer {
+//            it?.let {
+//                adapter.data = it
+//            }
+//        })
 
         viewModel.navigateToLogin.observe(viewLifecycleOwner, Observer {
             it?.let {

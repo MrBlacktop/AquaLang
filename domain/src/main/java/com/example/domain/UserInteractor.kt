@@ -4,6 +4,7 @@ import com.example.domain.models.RegistrationRespond
 import com.example.domain.models.User
 import com.example.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.count
+import sun.rmi.runtime.Log
 import java.lang.Exception
 
 class UserInteractor(private val userRepository: UserRepository) {
@@ -12,18 +13,14 @@ class UserInteractor(private val userRepository: UserRepository) {
          return userRepository.addUser(user, password)
     }
 
-    suspend fun loginUser(userName: String , password: String): Boolean{
-        return try {
+    suspend fun loginUser(userName: String , password: String){
             val user = userRepository.getUserFromApi(userName, password)
             userRepository.addUserToDb(user)
-            true
-        }catch (e: Exception){
-            false
-        }
+
 
     }
 
-    suspend fun isUserLoggedOn(): Boolean{
-        return userRepository.getUserFromDb().count() != 0
+     fun isUserLoggedOn(): Boolean{
+        return userRepository.getUserFromDb() != null
     }
 }

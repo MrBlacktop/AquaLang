@@ -6,8 +6,8 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class RegistrationRespondWebModel(
     var status: Boolean,
-    var description: String
+    var message: String
 )
 
 fun RegistrationRespondWebModel.asDomainModel() =
-    RegistrationRespond(status, description)
+    RegistrationRespond(status, message)

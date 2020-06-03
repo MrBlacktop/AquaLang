@@ -15,7 +15,8 @@ data class UserDbModel(
 )
 
 fun UserDbModel.asDomainModel() =
-    User(id, userName, email, firstName, lastName)
+    User(this.id, this.userName, this.email, this.firstName, this.lastName)
+
 fun User.asDbModel() = UserDbModel(
     id,
     userName,

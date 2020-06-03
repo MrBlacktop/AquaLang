@@ -13,7 +13,7 @@ class NetworkModule {
     @Provides
     fun providesRetrofit(): Retrofit{
         return Retrofit.Builder()
-            .baseUrl("https://")
+            .baseUrl("https://aqualang.herokuapp.com/")
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()

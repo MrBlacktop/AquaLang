@@ -1,5 +1,6 @@
 package com.example.aqualang.login.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,7 @@ import com.example.domain.UserInteractor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
+import kotlin.Exception
 
 class LoginViewModel(private val userInteractor: UserInteractor) : ViewModel() {
     private val _navigateToCoursesList = MutableLiveData<Boolean>()
@@ -16,41 +17,47 @@ class LoginViewModel(private val userInteractor: UserInteractor) : ViewModel() {
 
     private val _navigateToRegistration = MutableLiveData<Boolean>()
     val navigateToRegistration: LiveData<Boolean>
-    get() = _navigateToRegistration
+        get() = _navigateToRegistration
 
     private val _showLoginErrorToast = MutableLiveData<Boolean>()
     val showLoginErrorToast: LiveData<Boolean>
-    get() = _showLoginErrorToast
+        get() = _showLoginErrorToast
 
     val userName = MutableLiveData<String>()
     val password = MutableLiveData<String>()
 
+    init {
+        userName.value = ""
+        password.value = ""
+    }
 
     private val uiScope = CoroutineScope(Dispatchers.Main)
 
-    fun signInButtonClicked(){
+    fun signInButtonClicked() {
         uiScope.launch {
-            val loginUser = userInteractor.loginUser(userName.value!!, password.value!!)
-            if (loginUser)
+            try {
+                userInteractor.loginUser(userName.value!!, password.value!!)
                 _navigateToCoursesList.value = true
-            else
+            } catch (e: Exception) {
                 _showLoginErrorToast.value = true
+                Log.e("LoginViewModel", e.message ?: "K")
+            }
         }
     }
 
-    fun signUpButtonClicked(){
+    fun signUpButtonClicked() {
         _navigateToRegistration.value = true
     }
 
-    fun doneNavigationToCoursesList(){
+    fun doneNavigationToCoursesList() {
         _navigateToCoursesList.value = null
     }
 
-    fun doneNavigatingToRegistration(){
+    fun doneNavigatingToRegistration() {
         _navigateToRegistration.value = null
     }
 
-    fun doneShowingErrorToast(){
+    fun doneShowingErrorToast() {
         _showLoginErrorToast.value = null
     }
 

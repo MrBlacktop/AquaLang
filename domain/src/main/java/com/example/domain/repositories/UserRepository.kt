@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface UserRepository {
     suspend fun addUser(user: User, password: String): RegistrationRespond
     suspend fun getUserFromApi(userName: String, password: String): User
-    fun getUserFromDb(): Flow<User>
+    fun getUserFromDb(): User?
     suspend fun addUserToDb(user: User)
 
 

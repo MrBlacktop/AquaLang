@@ -27,7 +27,7 @@ class CoursesListViewModel(
 
     init {
         checkIfUserLoggedIn()
-        loadCourses()
+//        loadCourses()
     }
 
     fun doneNavigatingToLogin() {
