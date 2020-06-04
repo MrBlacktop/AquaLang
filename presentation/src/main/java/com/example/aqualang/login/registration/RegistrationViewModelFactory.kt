@@ -2,7 +2,7 @@ package com.example.aqualang.login.registration
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.domain.UserInteractor
+import com.example.domain.interactors.UserInteractor
 import javax.inject.Inject
 
 class RegistrationViewModelFactory @Inject constructor(private val interactor: UserInteractor): ViewModelProvider.Factory {

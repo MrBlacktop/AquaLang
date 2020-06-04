@@ -1,14 +1,15 @@
 package com.example.data.repositories
 
+import android.util.Log
 import com.example.data.database.AquaLangDatabaseDao
-import com.example.data.database.models.asDbModel
 import com.example.data.database.models.asDomainModel
 import com.example.data.network.UserApiService
-import com.example.data.network.models.Login
-import com.example.data.network.models.asDomainModel
-import com.example.data.network.models.asWebModel
-import com.example.domain.models.RegistrationRespond
-import com.example.domain.models.User
+import com.example.data.network.models.user.asDbModel
+import com.example.data.network.models.user.asDomainModel
+import com.example.data.network.models.user.asWebModel
+import com.example.domain.models.user.RegistrationRespond
+import com.example.domain.models.user.User
+import com.example.domain.models.user.UserLogin
 import com.example.domain.repositories.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -26,18 +27,26 @@ class UserRepositoryImpl @Inject constructor(
         return respond.asDomainModel()
     }
 
-    override suspend fun getUserFromApi(userName: String, password: String): User {
-        return userApiService.getUserAsync(Login(userName, password)).await().asDomainModel()
+    override suspend fun logInUser(userLogin: UserLogin): User {
+        val user = userApiService.getUserAsync(userLogin.asWebModel()).await()
+        Log.e("UserRepository",user.toString())
+        withContext(Dispatchers.IO){
+            dao.insert(user.asDbModel())
+        }
+        return user.asDomainModel()
     }
 
     override fun getUserFromDb(): User? {
-        return dao.getUser()?.asDomainModel()
+        val asDomainModel = dao.getUser()?.asDomainModel()
+        Log.e("UserRep",asDomainModel.toString())
+        return asDomainModel
     }
 
-    override suspend fun addUserToDb(user: User) {
-        withContext(Dispatchers.IO) {
-            dao.insert(user.asDbModel())
+    override suspend fun deleteUsers() {
+        withContext(Dispatchers.IO){
+            dao.clearUsers()
         }
     }
+
 
 }

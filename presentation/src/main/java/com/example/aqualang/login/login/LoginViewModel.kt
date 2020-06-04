@@ -4,11 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.UserInteractor
+import com.example.domain.interactors.UserInteractor
+import com.example.domain.models.user.UserLogin
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.Exception
 
 class LoginViewModel(private val userInteractor: UserInteractor) : ViewModel() {
     private val _navigateToCoursesList = MutableLiveData<Boolean>()
@@ -23,24 +23,26 @@ class LoginViewModel(private val userInteractor: UserInteractor) : ViewModel() {
     val showLoginErrorToast: LiveData<Boolean>
         get() = _showLoginErrorToast
 
-    val userName = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
 
-    init {
-        userName.value = ""
-        password.value = ""
-    }
+    val userLogin = MutableLiveData<UserLogin>()
+
 
     private val uiScope = CoroutineScope(Dispatchers.Main)
 
+    init {
+        userLogin.value = UserLogin()
+    }
+
     fun signInButtonClicked() {
-        uiScope.launch {
-            try {
-                userInteractor.loginUser(userName.value!!, password.value!!)
-                _navigateToCoursesList.value = true
-            } catch (e: Exception) {
-                _showLoginErrorToast.value = true
-                Log.e("LoginViewModel", e.message ?: "K")
+        userLogin.value?.let {
+            uiScope.launch {
+                try {
+                    userInteractor.loginUser(it)
+                    _navigateToCoursesList.value = true
+                } catch (e: Exception) {
+                    _showLoginErrorToast.value = true
+                    Log.e("LoginViewModel", e.message ?: "Unexpected error")
+                }
             }
         }
     }

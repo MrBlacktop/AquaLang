@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".education.coursesList.CoursesListFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coursesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:listitem="@layout/course_list_item" />
 
-
 </FrameLayout>
+

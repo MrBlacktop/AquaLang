@@ -8,11 +8,15 @@
     <fragment
         android:id="@+id/coursesListFragment"
         android:name="com.example.aqualang.education.coursesList.CoursesListFragment"
-        android:label="courses_list_fragment"
+        android:label="@string/courses"
         tools:layout="@layout/courses_list_fragment" >
         <action
             android:id="@+id/action_coursesListFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/navigation.xml" />
+        <action
+            android:id="@+id/action_coursesListFragment_to_courseFragment"
+            app:destination="@id/courseFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -24,7 +28,9 @@
             app:destination="@id/registrationFragment" />
         <action
             android:id="@+id/action_loginFragment_to_coursesListFragment"
-            app:destination="@id/coursesListFragment" />
+            app:destination="@id/coursesListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation.xml" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -34,5 +40,29 @@
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.example.aqualang.education.course.CourseFragment"
+        android:label="CourseFragment" >
+        <argument
+            android:name="courseId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.aqualang.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.aqualang.user.UserFragment"
+        android:label="user_fragment"
+        tools:layout="@layout/user_fragment" >
+        <action
+            android:id="@+id/action_userFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/navigation.xml"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

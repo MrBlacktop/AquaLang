@@ -1,20 +1,20 @@
 package com.example.aqualang.education.coursesList
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.example.domain.LoadCoursesUseCase
-import com.example.domain.UserInteractor
+import com.example.domain.interactors.CourseInteractor
+import com.example.domain.interactors.UserInteractor
 import com.example.domain.models.Course
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class CoursesListViewModel(
     private val userInteractor: UserInteractor,
-    private val loadCoursesUseCase: LoadCoursesUseCase
+    private val loadCoursesUseCase: CourseInteractor
 ) : ViewModel() {
 
     private val _navigateToLogin = MutableLiveData<Boolean>()
@@ -23,11 +23,11 @@ class CoursesListViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main)
 
-    lateinit var courses: LiveData<List<Course>>
+    val courses: LiveData<List<Course>> = loadCoursesUseCase.loadCourses().asLiveData()
 
     init {
         checkIfUserLoggedIn()
-//        loadCourses()
+        sync()
     }
 
     fun doneNavigatingToLogin() {
@@ -41,9 +41,9 @@ class CoursesListViewModel(
         }
     }
 
-    private fun loadCourses() {
+    private fun sync() {
         uiScope.launch {
-            courses = loadCoursesUseCase.loadCourses().asLiveData()
+            loadCoursesUseCase.sync()
         }
     }
 }

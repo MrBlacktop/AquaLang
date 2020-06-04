@@ -10,9 +10,10 @@ data class CourseDbModel(
     val id: Int,
     var title: String,
     var description: String,
-    var authorName: String
+    var authorName: String,
+    var authorId: Int
 )
 
 fun CourseDbModel.asDomainModel() =
-    Course(id, title, description, authorName)
+    Course(id, title, description, authorName, authorId)
 

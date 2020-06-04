@@ -1,6 +1,6 @@
-package com.example.data.network.models
+package com.example.data.network.models.user
 
-import com.example.domain.models.User
+import com.example.domain.models.user.User
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -29,4 +29,11 @@ fun UserWebModel.asDomainModel(): User {
 }
 
 fun User.asWebModel(password: String) =
-    UserWebModel(id, userName, firstName, lastName,email, password)
+    UserWebModel(
+        id,
+        userName,
+        firstName,
+        lastName,
+        email,
+        password
+    )

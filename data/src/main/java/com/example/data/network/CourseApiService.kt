@@ -5,6 +5,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
 interface CourseApiService {
-    @GET("course")
+    @GET("courses/")
     fun getAllCoursesAsync(): Deferred<List<CourseWebModel>>
+
 }

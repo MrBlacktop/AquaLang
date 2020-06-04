@@ -1,19 +1,19 @@
 package com.example.data.network
 
-import com.example.data.network.models.Login
-import com.example.data.network.models.RegistrationRespondWebModel
-import com.example.data.network.models.UserWebModel
+import com.example.data.network.models.user.UserLoginWebModel
+import com.example.data.network.models.user.RegistrationRespondWebModel
+import com.example.data.network.models.user.UserWebModel
+import com.example.data.network.models.user.UserWithTokenWebModel
 import kotlinx.coroutines.Deferred
 import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.HTTP
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface UserApiService {
 
     @POST("user/")
     fun postUserAsync(@Body user: UserWebModel): Deferred<RegistrationRespondWebModel>
 
-    @POST("user/")
-    fun getUserAsync(@Body login: Login): Deferred<UserWebModel>
+    @PUT("user/")
+    fun getUserAsync(@Body login: UserLoginWebModel): Deferred<UserWithTokenWebModel>
 }

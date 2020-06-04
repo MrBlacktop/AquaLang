@@ -1,14 +1,12 @@
 package com.example.domain.repositories
 
-import com.example.domain.models.RegistrationRespond
-import com.example.domain.models.User
-import kotlinx.coroutines.flow.Flow
+import com.example.domain.models.user.RegistrationRespond
+import com.example.domain.models.user.User
+import com.example.domain.models.user.UserLogin
 
 interface UserRepository {
     suspend fun addUser(user: User, password: String): RegistrationRespond
-    suspend fun getUserFromApi(userName: String, password: String): User
+    suspend fun logInUser(userLogin: UserLogin): User
     fun getUserFromDb(): User?
-    suspend fun addUserToDb(user: User)
-
-
+    suspend fun deleteUsers()
 }

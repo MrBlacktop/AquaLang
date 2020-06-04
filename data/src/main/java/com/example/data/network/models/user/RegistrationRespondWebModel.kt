@@ -1,6 +1,6 @@
-package com.example.data.network.models
+package com.example.data.network.models.user
 
-import com.example.domain.models.RegistrationRespond
+import com.example.domain.models.user.RegistrationRespond
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)

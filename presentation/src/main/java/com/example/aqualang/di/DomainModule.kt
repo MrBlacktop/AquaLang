@@ -2,8 +2,8 @@ package com.example.aqualang.di
 
 import com.example.data.repositories.CourseRepositoryImpl
 import com.example.data.repositories.UserRepositoryImpl
-import com.example.domain.LoadCoursesUseCase
-import com.example.domain.UserInteractor
+import com.example.domain.interactors.CourseInteractor
+import com.example.domain.interactors.UserInteractor
 import com.example.domain.repositories.CourseRepository
 import com.example.domain.repositories.UserRepository
 import dagger.Module
@@ -33,7 +33,7 @@ class DomainModule {
 
     @Singleton
     @Provides
-    fun providesLoadCoursesUseCase(courseRepository: CourseRepository): LoadCoursesUseCase {
-        return LoadCoursesUseCase(courseRepository)
+    fun providesCourseInteractor(courseRepository: CourseRepository): CourseInteractor {
+        return CourseInteractor(courseRepository)
     }
 }

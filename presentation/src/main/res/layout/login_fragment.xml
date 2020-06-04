@@ -14,6 +14,16 @@
         android:layout_height="match_parent"
         tools:context=".login.login.LoginFragment">
 
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/aqualang_logo"
+            android:contentDescription="@string/logo"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -38,7 +48,7 @@
                 android:hint="@string/login">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:text="@={viewModel.userName}"
+                    android:text="@={viewModel.userLogin.userName}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -55,7 +65,7 @@
                 android:hint="@string/password">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:text="@={viewModel.password}"
+                    android:text="@={viewModel.userLogin.password}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword" />
