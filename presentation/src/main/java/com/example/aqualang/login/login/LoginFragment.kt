@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,7 @@ class LoginFragment : Fragment() {
         val binding = LoginFragmentBinding.inflate(inflater,container,false)
 
         (requireActivity().application as AquaLangApplication).appComponent.inject(this)
+
 
         viewModel = ViewModelProvider(this,viewModelFactory).get(LoginViewModel::class.java)
 

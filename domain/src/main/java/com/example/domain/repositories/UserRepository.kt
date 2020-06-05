@@ -9,4 +9,5 @@ interface UserRepository {
     suspend fun logInUser(userLogin: UserLogin): User
     fun getUserFromDb(): User?
     suspend fun deleteUsers()
+    fun getUserToken(): String
 }

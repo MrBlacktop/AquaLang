@@ -1,10 +1,8 @@
 package com.example.data.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.data.database.models.CourseDbModel
+import com.example.data.database.models.TopicDbModel
 import com.example.data.database.models.UserDbModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.selects.select
@@ -23,10 +21,20 @@ interface AquaLangDatabaseDao {
     @Query("select * from courses")
     fun getAllCourses(): Flow<List<CourseDbModel>>
 
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllCourses(courses: List<CourseDbModel>)
 
     @Query("select * from courses where id = :id")
     fun getCourse(id: Int): CourseDbModel
 
+    @Update
+    fun updateCourse(course: CourseDbModel)
+
+    @Query("select * from topics where courseId =:courseId order by orderNumber")
+    fun getCourseTopics(courseId:Int): Flow<List<TopicDbModel>>
+
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertTopics(topics: List<TopicDbModel>)
 }

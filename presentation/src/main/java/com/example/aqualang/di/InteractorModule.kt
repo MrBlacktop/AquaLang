@@ -3,8 +3,10 @@ package com.example.aqualang.di
 import com.example.data.repositories.CourseRepositoryImpl
 import com.example.data.repositories.UserRepositoryImpl
 import com.example.domain.interactors.CourseInteractor
+import com.example.domain.interactors.TopicInteractor
 import com.example.domain.interactors.UserInteractor
 import com.example.domain.repositories.CourseRepository
+import com.example.domain.repositories.TopicRepository
 import com.example.domain.repositories.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -12,12 +14,8 @@ import javax.inject.Singleton
 
 
 @Module
-class DomainModule {
-    @Singleton
-    @Provides
-    fun providesUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository {
-        return userRepositoryImpl
-    }
+class InteractorModule {
+
 
     @Singleton
     @Provides
@@ -27,13 +25,16 @@ class DomainModule {
 
     @Singleton
     @Provides
-    fun providesCourseRepository(courseRepositoryImpl: CourseRepositoryImpl): CourseRepository {
-        return courseRepositoryImpl
+    fun providesCourseInteractor(
+        courseRepository: CourseRepository,
+        userRepository: UserRepository
+    ): CourseInteractor {
+        return CourseInteractor(courseRepository, userRepository)
     }
 
     @Singleton
     @Provides
-    fun providesCourseInteractor(courseRepository: CourseRepository): CourseInteractor {
-        return CourseInteractor(courseRepository)
+    fun providesTopicInteractor(topicRepository: TopicRepository): TopicInteractor {
+        return TopicInteractor(topicRepository)
     }
 }

@@ -15,4 +15,4 @@ data class CourseWebModel(
     var authorId: Int
 )
 
-fun CourseWebModel.asDatabaseModel() = CourseDbModel(id, title, description, authorName, authorId)
+fun CourseWebModel.asDatabaseModel() = CourseDbModel(id, title, description, authorName, authorId, false)

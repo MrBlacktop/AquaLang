@@ -11,7 +11,7 @@ import javax.inject.Singleton
 class NetworkModule {
     @Singleton
     @Provides
-    fun providesRetrofit(): Retrofit{
+    fun providesRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://aqualang.herokuapp.com/")
             .addConverterFactory(MoshiConverterFactory.create())
@@ -21,13 +21,16 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesUserApiService(retrofit: Retrofit): UserApiService{
-        return retrofit.create(UserApiService::class.java)
-    }
+    fun providesUserApiService(retrofit: Retrofit): UserApiService =
+        retrofit.create(UserApiService::class.java)
 
     @Singleton
     @Provides
-    fun providesCourseApiService(retrofit: Retrofit): CourseApiService{
-        return retrofit.create(CourseApiService::class.java)
-    }
+    fun providesCourseApiService(retrofit: Retrofit): CourseApiService =
+        retrofit.create(CourseApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun providesTopicApiService(retrofit: Retrofit): TopicApiService =
+        retrofit.create(TopicApiService::class.java)
 }

@@ -2,6 +2,7 @@ package com.example.data.repositories
 
 import android.util.Log
 import com.example.data.database.AquaLangDatabaseDao
+import com.example.data.database.models.asDbModel
 import com.example.data.database.models.asDomainModel
 import com.example.data.network.CourseApiService
 import com.example.data.network.models.asDatabaseModel
@@ -23,13 +24,31 @@ class CourseRepositoryImpl @Inject constructor(
 
     override suspend fun synchronize() {
         withContext(Dispatchers.IO) {
-            val courses = courseApiService.getAllCoursesAsync().await()
-            dao.insertAllCourses(courses.map { it.asDatabaseModel() })
+            var courses = courseApiService.getAllCoursesAsync().await().map { it.asDatabaseModel() }.filter { it.isActive }
+            dao.getAllCourses()
+                .map { list ->
+                    courses = courses.plus(list.filter { !it.isActive })
+                }
+            dao.insertAllCourses(courses)
         }
     }
 
     override fun getCourse(id: Int): Course {
-        Log.e("CourseRep","id: $id")
+        Log.e("CourseRep", "id: $id")
         return dao.getCourse(id).asDomainModel()
+    }
+
+    override suspend fun subscribeUser(courseId: Int, token: String): Boolean {
+        return courseApiService.subscribeAsync(courseId, token).await().status
+    }
+
+    override suspend fun unsubscribeUser(courseId: Int, token: String): Boolean {
+        return courseApiService.unsubscribeAsync(courseId, token).await().status
+    }
+
+    override suspend fun updateCourse(course: Course) {
+        withContext(Dispatchers.IO){
+            dao.updateCourse(course.asDbModel())
+        }
     }
 }

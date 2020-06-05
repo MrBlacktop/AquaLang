@@ -21,4 +21,7 @@
     <string name="user">User</string>
     <string name="logout">Logout</string>
     <string name="logo">logo</string>
+    <string name="topic_name">Topic name</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="unsubscribe">unsubscribe</string>
 </resources>

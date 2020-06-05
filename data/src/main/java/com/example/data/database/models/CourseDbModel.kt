@@ -11,9 +11,12 @@ data class CourseDbModel(
     var title: String,
     var description: String,
     var authorName: String,
-    var authorId: Int
+    var authorId: Int,
+    var isActive: Boolean
 )
 
 fun CourseDbModel.asDomainModel() =
-    Course(id, title, description, authorName, authorId)
+    Course(id, title, description, authorName, authorId, isActive)
+
+fun Course.asDbModel() = CourseDbModel(id, title, description, authorName, authorId, isActive)
 

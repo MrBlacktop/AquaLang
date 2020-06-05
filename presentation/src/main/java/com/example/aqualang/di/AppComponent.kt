@@ -10,7 +10,7 @@ import com.example.data.network.NetworkModule
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(modules = [NetworkModule::class, DatabaseModule::class, DomainModule::class])
+@Component(modules = [NetworkModule::class, DatabaseModule::class, InteractorModule::class, RepositoryModule::class])
 @Singleton
 interface AppComponent {
     fun inject(loginFragment: LoginFragment)

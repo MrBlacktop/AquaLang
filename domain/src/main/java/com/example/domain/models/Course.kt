@@ -5,5 +5,6 @@ data class Course(
     var title: String,
     var description: String,
     var authorName: String,
-    var authorId: Int
+    var authorId: Int,
+    var isActive: Boolean
 )

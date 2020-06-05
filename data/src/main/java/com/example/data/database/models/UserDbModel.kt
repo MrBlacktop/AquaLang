@@ -23,3 +23,5 @@ fun UserDbModel.asDomainModel() =
         this.firstName,
         this.lastName
     )
+
+fun UserDbModel.getToken() = "Token $token"

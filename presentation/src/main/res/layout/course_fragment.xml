@@ -16,6 +16,7 @@
         tools:context=".education.course.CourseFragment">
 
         <TextView
+            style="@style/AppTheme"
             android:id="@+id/courseInformationTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
             tools:text="@string/course_title" />
 
         <TextView
+            style="@style/AppTheme"
             android:id="@+id/courseInformationAuthorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,6 +48,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
+            style="@style/AppTheme"
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,11 +61,10 @@
 
         <TextView
             android:id="@+id/courseInformationDescription"
+            style="@style/AppTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:text="@{viewModel.course.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,24 +72,33 @@
             tools:text="@string/lorem_ipsum" />
 
         <Button
+            android:id="@+id/subscribeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/start"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="16dp"
+            android:onClick="@{() -> viewModel.subscribeButtonClicked()}"
+            android:text="@string/subscribe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseInformationAuthorName" />
 
-        <androidx.fragment.app.FragmentContainerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/topicList"
-            android:name="com.example.aqualang.education.topicList.TopicListFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseInformationDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/courseInformationDescription"
+            tools:listitem="@layout/topic_list_item" />
 
+        <Button
+            android:id="@+id/unsubscribeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unsubscribe"
+            android:onClick="@{() -> viewModel.unsubscribeButtonClicked()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subscribeButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
