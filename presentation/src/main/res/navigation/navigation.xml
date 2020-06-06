@@ -48,6 +48,9 @@
         <argument
             android:name="courseId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_courseFragment_to_lessonListFragment"
+            app:destination="@id/lessonListFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -64,5 +67,26 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/navigation.xml"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonListFragment"
+        android:name="com.example.aqualang.education.lessonList.LessonListFragment"
+        android:label="lesson_list_fragment"
+        tools:layout="@layout/lesson_list_fragment" >
+        <argument
+            android:name="topicId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_lessonListFragment_to_lessonFragment"
+            app:destination="@id/lessonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonFragment"
+        android:name="com.example.aqualang.education.lesson.LessonFragment"
+        android:label="lesson_fragment"
+        tools:layout="@layout/lesson_fragment" >
+        <argument
+            android:name="lessonId"
+            app:argType="integer" />
     </fragment>
 </navigation>

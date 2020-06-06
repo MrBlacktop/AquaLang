@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -78,6 +79,14 @@ class CoursesListFragment : Fragment() {
                     this.findNavController()
                         .navigate(R.id.action_coursesListFragment_to_loginFragment)
                     viewModel.doneNavigatingToLogin()
+                }
+            }
+        })
+
+        viewModel.showNetworkError.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it) {
+                    Toast.makeText(context, "Network error", Toast.LENGTH_LONG).show()
                 }
             }
         })

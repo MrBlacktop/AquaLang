@@ -4,40 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="course"
             type="com.example.domain.models.Course" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:background="@drawable/border"
+    <androidx.cardview.widget.CardView
+        style="@style/AppTheme"
         android:layout_margin="8dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/courseTitleTextciew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@{course.title}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/course_title" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/courseAuthorNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{course.authorName}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseTitleTextciew"
-            tools:text="@string/author_name" />
+            <TextView
+                android:id="@+id/courseTitleTextciew"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@{course.title}"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/course_title" />
+
+            <TextView
+                android:id="@+id/courseAuthorNameTextView"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{course.authorName}"
+                app:layout_constraintStart_toStartOf="@+id/courseTitleTextciew"
+                app:layout_constraintTop_toBottomOf="@+id/courseTitleTextciew"
+                tools:text="@string/author_name" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:pictureUrl="@{course.pictureUrl}"
+                tools:src="@tools:sample/avatars" />
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

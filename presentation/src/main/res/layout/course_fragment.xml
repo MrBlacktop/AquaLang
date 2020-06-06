@@ -41,35 +41,44 @@
         <ImageView
             android:id="@+id/courseInformationImage"
             android:layout_width="180dp"
+            app:pictureUrl="@{viewModel.course.pictureUrl}"
             android:layout_height="160dp"
             android:contentDescription="@string/course_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
-        <TextView
-            style="@style/AppTheme"
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:text="@string/description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseInformationImage" />
-
-        <TextView
-            android:id="@+id/courseInformationDescription"
-            style="@style/AppTheme"
+        <LinearLayout
+            android:padding="6dp"
+            android:id="@+id/DescriptionLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/border"
             android:layout_marginTop="8dp"
-            android:text="@{viewModel.course.description}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description"
-            tools:text="@string/lorem_ipsum" />
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/courseInformationImage"
+            tools:layout_editor_absoluteX="8dp">
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/AppTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/description"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/courseInformationDescription"
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.course.description}"
+
+                tools:text="@string/lorem_ipsum" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/subscribeButton"
@@ -84,21 +93,22 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/topicList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseInformationDescription"
+            app:layout_constraintTop_toBottomOf="@+id/DescriptionLayout"
             tools:listitem="@layout/topic_list_item" />
 
         <Button
             android:id="@+id/unsubscribeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/unsubscribe"
+            android:layout_marginBottom="8dp"
             android:onClick="@{() -> viewModel.unsubscribeButtonClicked()}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subscribeButton" />
+            android:text="@string/unsubscribe"
+            app:layout_constraintBottom_toTopOf="@+id/DescriptionLayout"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,9 @@ data class CourseWebModel(
     @Json(name = "author_username")
     var authorName: String,
     @Json(name = "author")
-    var authorId: Int
+    var authorId: Int,
+    @Json(name = "picture")
+    var pictureUrl: String?
 )
 
-fun CourseWebModel.asDatabaseModel() = CourseDbModel(id, title, description, authorName, authorId, false)
+fun CourseWebModel.asDatabaseModel() = CourseDbModel(id, title, description, authorName, authorId, false,pictureUrl)

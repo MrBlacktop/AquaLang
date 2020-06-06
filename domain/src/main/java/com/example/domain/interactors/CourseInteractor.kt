@@ -12,7 +12,8 @@ class CourseInteractor(private val courseRepository: CourseRepository, private v
     }
 
     suspend fun sync(){
-        courseRepository.synchronize()
+        val user = userRepository.getUserFromDb() ?: throw Exception("current user not found")
+        courseRepository.synchronize(user.id)
     }
 
     fun getCourse(id: Int): Course{

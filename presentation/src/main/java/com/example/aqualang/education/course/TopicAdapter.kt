@@ -1,4 +1,4 @@
-package com.example.aqualang.education.topicList
+package com.example.aqualang.education.course
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,7 +16,9 @@ class TopicAdapter(private val course: Course, private val clickListener: TopicL
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 
     override fun getItemCount() = data.size
@@ -43,7 +45,9 @@ class TopicAdapter(private val course: Course, private val clickListener: TopicL
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = TopicListItemBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
     }

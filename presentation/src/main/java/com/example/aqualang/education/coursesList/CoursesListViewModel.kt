@@ -21,29 +21,45 @@ class CoursesListViewModel(
     val navigateToLogin: LiveData<Boolean>
         get() = _navigateToLogin
 
+    private val _showNetworkError = MutableLiveData<Boolean>()
+    val showNetworkError: LiveData<Boolean>
+        get() = _showNetworkError
+
     private val uiScope = CoroutineScope(Dispatchers.Main)
 
     val courses: LiveData<List<Course>> = loadCoursesUseCase.loadCourses().asLiveData()
 
     init {
         checkIfUserLoggedIn()
-        sync()
+//        sync()
     }
 
     fun doneNavigatingToLogin() {
         _navigateToLogin.value = null
     }
 
+    fun doneShowingNetworkErrorToast(){
+        _showNetworkError.value = null
+    }
+
     private fun checkIfUserLoggedIn() {
         uiScope.launch {
             if (!userInteractor.isUserLoggedOn())
                 _navigateToLogin.value = true
+            else
+                sync()
         }
     }
 
     private fun sync() {
-        uiScope.launch {
-            loadCoursesUseCase.sync()
+        try {
+            uiScope.launch {
+                loadCoursesUseCase.sync()
+            }
+        } catch (e: Exception) {
+            Log.e("CourseListViewModel", e.message ?: "unknown error")
+            _showNetworkError.value = true
         }
+
     }
 }

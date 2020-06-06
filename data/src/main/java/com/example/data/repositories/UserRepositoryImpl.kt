@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.data.database.AquaLangDatabaseDao
 import com.example.data.database.models.asDomainModel
 import com.example.data.database.models.getToken
-import com.example.data.network.UserApiService
+import com.example.data.network.apiServices.UserApiService
 import com.example.data.network.models.user.asDbModel
 import com.example.data.network.models.user.asDomainModel
 import com.example.data.network.models.user.asWebModel

@@ -9,10 +9,12 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aqualang.AquaLangApplication
+import com.example.aqualang.R
 import com.example.aqualang.databinding.CourseFragmentBinding
-import com.example.aqualang.education.topicList.TopicAdapter
+import com.example.aqualang.education.lessonList.LessonListFragment
 import com.example.domain.interactors.CourseInteractor
 import com.example.domain.interactors.TopicInteractor
 import javax.inject.Inject
@@ -59,9 +61,15 @@ class CourseFragment : Fragment() {
             }
         })
 
-        val adapter = TopicAdapter(viewModel.course,TopicAdapter.TopicListener {
+        val adapter = TopicAdapter(
+            viewModel.course,
+            TopicAdapter.TopicListener {
+                this.findNavController().navigate(
+                    R.id.action_courseFragment_to_lessonListFragment,
+                    LessonListFragment.createBundleWithIndex(it)
+                )
+            })
 
-        })
         viewModel.topics.value?.let {
             adapter.data = it
         }

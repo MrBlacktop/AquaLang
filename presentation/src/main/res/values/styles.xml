@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/primaryLightColor</item>
         <item name="cardBackgroundColor">@color/primaryColor</item>
+        <item name="extendedFloatingActionButtonStyle">@color/primaryColor</item>
     </style>
 
     <style name="WhiteText" parent="AppTheme">

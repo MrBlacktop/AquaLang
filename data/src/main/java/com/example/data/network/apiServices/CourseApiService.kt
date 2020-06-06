@@ -1,4 +1,4 @@
-package com.example.data.network
+package com.example.data.network.apiServices
 
 import com.example.data.network.models.CourseWebModel
 import com.example.data.network.models.SubscriptionRespondWebModel
@@ -11,14 +11,13 @@ interface CourseApiService {
     @GET("courses/")
     fun getAllCoursesAsync(): Deferred<List<CourseWebModel>>
 
-    @GET("courses/index")
-    fun getCourse(index: Int)
-
-
     @GET("courses/{id}/subscribe/")
     fun subscribeAsync(@Path("id") courseId: Int, @Header("Authorization") token: String): Deferred<SubscriptionRespondWebModel>
 
     @GET("courses/{id}/unsubscribe/")
     fun unsubscribeAsync(@Path("id") courseId: Int, @Header("Authorization") token: String): Deferred<SubscriptionRespondWebModel>
+
+    @GET("users/{id}/subs/")
+    fun getActiveCoursesAsync(@Path("id") userId: Int): Deferred<List<CourseWebModel>>
 }
 

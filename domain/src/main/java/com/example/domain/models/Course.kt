@@ -6,5 +6,6 @@ data class Course(
     var description: String,
     var authorName: String,
     var authorId: Int,
-    var isActive: Boolean
+    var isActive: Boolean,
+    var pictureUrl: String?
 )

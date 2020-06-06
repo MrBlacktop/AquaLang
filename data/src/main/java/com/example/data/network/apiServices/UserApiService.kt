@@ -1,4 +1,4 @@
-package com.example.data.network
+package com.example.data.network.apiServices
 
 import com.example.data.network.models.user.UserLoginWebModel
 import com.example.data.network.models.user.RegistrationRespondWebModel
@@ -11,9 +11,9 @@ import retrofit2.http.PUT
 
 interface UserApiService {
 
-    @POST("user/")
+    @POST("users/")
     fun postUserAsync(@Body user: UserWebModel): Deferred<RegistrationRespondWebModel>
 
-    @PUT("user/")
+    @POST("users/login/")
     fun getUserAsync(@Body login: UserLoginWebModel): Deferred<UserWithTokenWebModel>
 }

@@ -1,9 +1,8 @@
 package com.example.data.repositories
 
 import com.example.data.database.AquaLangDatabaseDao
-import com.example.data.database.models.TopicDbModel
 import com.example.data.database.models.asDomainModel
-import com.example.data.network.TopicApiService
+import com.example.data.network.apiServices.TopicApiService
 import com.example.data.network.models.asDbModel
 import com.example.domain.models.Topic
 import com.example.domain.repositories.TopicRepository

@@ -3,9 +3,11 @@ package com.example.aqualang.di
 import com.example.data.repositories.CourseRepositoryImpl
 import com.example.data.repositories.UserRepositoryImpl
 import com.example.domain.interactors.CourseInteractor
+import com.example.domain.interactors.LessonInteractor
 import com.example.domain.interactors.TopicInteractor
 import com.example.domain.interactors.UserInteractor
 import com.example.domain.repositories.CourseRepository
+import com.example.domain.repositories.LessonRepository
 import com.example.domain.repositories.TopicRepository
 import com.example.domain.repositories.UserRepository
 import dagger.Module
@@ -36,5 +38,11 @@ class InteractorModule {
     @Provides
     fun providesTopicInteractor(topicRepository: TopicRepository): TopicInteractor {
         return TopicInteractor(topicRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesLessonInteractor(lessonRepository: LessonRepository): LessonInteractor {
+        return LessonInteractor(lessonRepository)
     }
 }
