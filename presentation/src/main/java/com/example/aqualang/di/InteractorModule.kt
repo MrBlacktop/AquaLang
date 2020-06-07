@@ -6,10 +6,8 @@ import com.example.domain.interactors.CourseInteractor
 import com.example.domain.interactors.LessonInteractor
 import com.example.domain.interactors.TopicInteractor
 import com.example.domain.interactors.UserInteractor
-import com.example.domain.repositories.CourseRepository
-import com.example.domain.repositories.LessonRepository
-import com.example.domain.repositories.TopicRepository
-import com.example.domain.repositories.UserRepository
+import com.example.domain.repositories.*
+import com.example.domain.useCases.LoadExercisesUseCase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -44,5 +42,14 @@ class InteractorModule {
     @Provides
     fun providesLessonInteractor(lessonRepository: LessonRepository): LessonInteractor {
         return LessonInteractor(lessonRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesLoadExercisesUseCase(
+        exerciseRepository: ExerciseRepository,
+        userRepository: UserRepository
+    ): LoadExercisesUseCase {
+        return LoadExercisesUseCase(exerciseRepository, userRepository)
     }
 }

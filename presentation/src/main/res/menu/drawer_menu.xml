@@ -2,13 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/userFragment"
-        android:title="@string/user"
+        android:id="@+id/glossaryFragment"
         android:enabled="true"
+        android:icon="@drawable/baseline_menu_book_24"
+        android:title="@string/glossary"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/userFragment"
+        android:enabled="true"
+        android:title="@string/user"
+        android:icon="@drawable/baseline_account_circle_24"
         android:visible="true" />
     <item
         android:id="@+id/aboutFragment"
         android:enabled="true"
-        android:visible="true"
-        android:title="@string/about" />
+        android:icon="@drawable/baseline_help_24"
+        android:title="@string/about"
+        android:visible="true" />
+
+
 </menu>

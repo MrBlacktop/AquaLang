@@ -9,7 +9,8 @@ import com.example.data.database.models.UserDbModel
 
 @Database(
     entities = [UserDbModel::class, CourseDbModel::class, TopicDbModel::class, LessonDbModel::class],
-    version = 8
+    version = 8,
+    exportSchema = false
 )
 abstract class AquaLangDatabase : RoomDatabase() {
     abstract val aquaLangDatabaseDao: AquaLangDatabaseDao

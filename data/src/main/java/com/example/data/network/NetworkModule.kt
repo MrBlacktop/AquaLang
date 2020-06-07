@@ -1,9 +1,6 @@
 package com.example.data.network
 
-import com.example.data.network.apiServices.CourseApiService
-import com.example.data.network.apiServices.LessonApiService
-import com.example.data.network.apiServices.TopicApiService
-import com.example.data.network.apiServices.UserApiService
+import com.example.data.network.apiServices.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -42,4 +39,9 @@ class NetworkModule {
     @Provides
     fun providesLessonApiService(retrofit: Retrofit): LessonApiService =
         retrofit.create(LessonApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun providesExerciseApiService(retrofit: Retrofit): ExerciseApiService =
+        retrofit.create(ExerciseApiService::class.java)
 }

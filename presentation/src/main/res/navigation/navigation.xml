@@ -88,5 +88,32 @@
         <argument
             android:name="lessonId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_lessonFragment_to_exerciseControlFragment"
+            app:destination="@id/exerciseControlFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/exerciseControlFragment"
+        android:name="com.example.aqualang.education.exercises.controlFragment.ExerciseControlFragment"
+        android:label="exercise_control_fragment"
+        tools:layout="@layout/exercise_control_fragment" >
+        <argument android:name="lessonId" />
+        <action
+            android:id="@+id/action_exerciseControlFragment_to_exerciseResultFragment"
+            app:destination="@id/exerciseResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseResultFragment"
+        android:name="com.example.aqualang.education.exercises.result.ExerciseResultFragment"
+        android:label="exercise_result_fragment"
+        tools:layout="@layout/exercise_result_fragment" >
+        <action
+            android:id="@+id/action_exerciseResultFragment_to_coursesListFragment"
+            app:destination="@id/coursesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/glossaryFragment"
+        android:name="com.example.aqualang.education.glossary.GlossaryFragment"
+        android:label="glossary_fragment"
+        tools:layout="@layout/glossary_fragment" />
 </navigation>

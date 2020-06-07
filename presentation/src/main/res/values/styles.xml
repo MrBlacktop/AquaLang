@@ -14,4 +14,12 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
+    <style name="NoActionBarStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/primaryLightColor</item>
+        <item name="cardBackgroundColor">@color/primaryColor</item>
+        <item name="extendedFloatingActionButtonStyle">@color/primaryColor</item>
+    </style>
+
 </resources>

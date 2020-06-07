@@ -1,13 +1,7 @@
 package com.example.aqualang.di
 
-import com.example.data.repositories.CourseRepositoryImpl
-import com.example.data.repositories.LessonRepositoryImpl
-import com.example.data.repositories.TopicRepositoryImpl
-import com.example.data.repositories.UserRepositoryImpl
-import com.example.domain.repositories.CourseRepository
-import com.example.domain.repositories.LessonRepository
-import com.example.domain.repositories.TopicRepository
-import com.example.domain.repositories.UserRepository
+import com.example.data.repositories.*
+import com.example.domain.repositories.*
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -36,5 +30,11 @@ class RepositoryModule {
     @Provides
     fun providesLessonRepository(lessonRepositoryImpl: LessonRepositoryImpl): LessonRepository {
         return lessonRepositoryImpl
+    }
+
+    @Singleton
+    @Provides
+    fun providesExerciseRepository(exerciseRepositoryImpl: ExerciseRepositoryImpl): ExerciseRepository{
+        return exerciseRepositoryImpl
     }
 }

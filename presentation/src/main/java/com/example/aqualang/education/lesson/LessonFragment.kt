@@ -10,9 +10,11 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.aqualang.AquaLangApplication
 import com.example.aqualang.R
 import com.example.aqualang.databinding.LessonFragmentBinding
+import com.example.aqualang.education.exercises.controlFragment.ExerciseControlFragment
 import com.example.domain.interactors.LessonInteractor
 import kotlinx.android.synthetic.main.lesson_fragment.*
 import javax.inject.Inject
@@ -22,7 +24,7 @@ class LessonFragment : Fragment() {
     companion object {
         private const val LESSON_ID = "LESSON_ID"
 
-        fun createBundleWithIndex(lessonId: Int): Bundle{
+        fun createBundleWithIndex(lessonId: Int): Bundle {
             return bundleOf(LESSON_ID to lessonId)
         }
     }
@@ -36,12 +38,12 @@ class LessonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = LessonFragmentBinding.inflate(inflater,container,false)
+        val binding = LessonFragmentBinding.inflate(inflater, container, false)
 
         (requireActivity().application as AquaLangApplication).appComponent.inject(this)
 
         val lessonId = requireArguments().getInt(LESSON_ID)
-        val viewModelFactory = LessonViewModelFactory(lessonInteractor,lessonId)
+        val viewModelFactory = LessonViewModelFactory(lessonInteractor, lessonId)
         viewModel = ViewModelProvider(this, viewModelFactory).get(LessonViewModel::class.java)
 
         binding.viewModel = viewModel
@@ -53,7 +55,11 @@ class LessonFragment : Fragment() {
 
         viewModel.navigateToExercises.observe(viewLifecycleOwner, Observer {
             it?.let {
-                if(it){
+                if (it) {
+                    this.findNavController().navigate(
+                        R.id.action_lessonFragment_to_exerciseControlFragment,
+                        ExerciseControlFragment.createBundleWithId(viewModel.lesson.id)
+                    )
                     viewModel.doneNavigationToExercises()
                 }
             }

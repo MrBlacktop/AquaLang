@@ -2,6 +2,8 @@ package com.example.aqualang.di
 
 import com.example.aqualang.education.course.CourseFragment
 import com.example.aqualang.education.coursesList.CoursesListFragment
+import com.example.aqualang.education.exercises.SingleOptionExerciseFragment
+import com.example.aqualang.education.exercises.controlFragment.ExerciseControlFragment
 import com.example.aqualang.education.lesson.LessonFragment
 import com.example.aqualang.education.lessonList.LessonListFragment
 import com.example.aqualang.login.login.LoginFragment
@@ -22,4 +24,6 @@ interface AppComponent {
     fun inject(userFragment: UserFragment)
     fun inject(lessonListFragment: LessonListFragment)
     fun inject(lessonFragment: LessonFragment)
+    fun inject(exerciseControlFragment: ExerciseControlFragment)
+    fun inject(singleOptionExerciseFragment: SingleOptionExerciseFragment)
 }
