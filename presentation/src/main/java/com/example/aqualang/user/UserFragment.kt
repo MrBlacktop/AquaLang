@@ -44,8 +44,9 @@ class UserFragment : Fragment() {
         viewModel.navigateToLogin.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if(it){
-                    this.findNavController().navigate(R.id.action_userFragment_to_loginFragment)
-                    viewModel.doneNavigationToLogin()
+                    this.findNavController().navigate(R.id.action_userFragment_to_loginActivity)
+                    requireActivity().finish()
+//                    viewModel.doneNavigationToLogin()
                 }
             }
         })

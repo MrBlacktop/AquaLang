@@ -43,8 +43,10 @@ class LoginFragment : Fragment() {
             it?.let {
                 if (it) {
                     this.findNavController()
-                        .navigate(R.id.action_loginFragment_to_coursesListFragment)
-                    viewModel.doneNavigationToCoursesList()
+                        .navigate(R.id.action_loginFragment2_to_mainActivity)
+//                    viewModel.doneNavigationToCoursesList()
+                    requireActivity().finish()
+
                 }
             }
         })
@@ -53,7 +55,7 @@ class LoginFragment : Fragment() {
             it?.let {
                 if (it) {
                     this.findNavController()
-                        .navigate(R.id.action_loginFragment_to_registrationFragment)
+                        .navigate(R.id.action_loginFragment2_to_registrationFragment2)
                     viewModel.doneNavigatingToRegistration()
                 }
             }

@@ -77,8 +77,9 @@ class CoursesListFragment : Fragment() {
             it?.let {
                 if (it) {
                     this.findNavController()
-                        .navigate(R.id.action_coursesListFragment_to_loginFragment)
-                    viewModel.doneNavigatingToLogin()
+                        .navigate(R.id.action_coursesListFragment_to_loginActivity)
+//                    viewModel.doneNavigatingToLogin()
+                    requireActivity().finish()
                 }
             }
         })

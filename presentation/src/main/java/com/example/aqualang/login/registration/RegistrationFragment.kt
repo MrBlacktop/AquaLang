@@ -45,7 +45,7 @@ class RegistrationFragment : Fragment() {
             it?.let {
                 if (it) {
                     this.findNavController()
-                        .navigate(R.id.action_registrationFragment_to_loginFragment)
+                        .navigate(R.id.action_registrationFragment2_to_loginFragment2)
                     viewModel.doneNavigationToLogin()
                 }
             }
