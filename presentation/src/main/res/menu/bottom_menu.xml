@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:id="@+id/coursesListFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_school_24"
+        android:title="@string/courses" />
     <item
         android:id="@+id/glossaryFragment"
         android:enabled="true"
         android:icon="@drawable/baseline_menu_book_24"
-        android:title="@string/glossary"
-        android:visible="true" />
-
+        android:title="@string/glossary" />
     <item
         android:id="@+id/userFragment"
         android:enabled="true"
-        android:title="@string/user"
         android:icon="@drawable/baseline_account_circle_24"
-        android:visible="true" />
-    <item
-        android:id="@+id/aboutFragment"
-        android:enabled="true"
-        android:icon="@drawable/baseline_help_24"
-        android:title="@string/about"
-        android:visible="true" />
-
-
+        android:title="@string/user" />
 </menu>
