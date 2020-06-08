@@ -38,7 +38,6 @@ class CourseRepositoryImpl @Inject constructor(
     }
 
     override fun getCourse(id: Int): Course {
-        Log.e("CourseRep", "id: $id")
         return dao.getCourse(id).asDomainModel()
     }
 

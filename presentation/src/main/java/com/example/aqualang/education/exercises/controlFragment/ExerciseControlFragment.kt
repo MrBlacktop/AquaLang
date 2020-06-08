@@ -1,6 +1,7 @@
 package com.example.aqualang.education.exercises.controlFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,12 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.aqualang.AquaLangApplication
 import com.example.aqualang.R
 import com.example.aqualang.education.exercises.ExerciseActivity
 import com.example.aqualang.education.exercises.controlFragment.viewPager.ExerciseAdapter
+import com.example.domain.models.exercise.ExerciseType
 import com.example.domain.useCases.LoadExercisesUseCase
 import kotlinx.android.synthetic.main.exercise_control_fragment.*
 import javax.inject.Inject
@@ -38,7 +41,10 @@ class ExerciseControlFragment : Fragment() {
 
         val viewModelFactory = ExerciseControlViewModelFactory(useCase, lessonId)
         viewModel =
-            ViewModelProvider(requireActivity(), viewModelFactory).get(ExerciseControlViewModel::class.java)
+            ViewModelProvider(
+                requireActivity(),
+                viewModelFactory
+            ).get(ExerciseControlViewModel::class.java)
 
         return inflater.inflate(R.layout.exercise_control_fragment, container, false)
     }
@@ -48,13 +54,14 @@ class ExerciseControlFragment : Fragment() {
 
 
         viewModel.exercises.observe(viewLifecycleOwner, Observer {
-            it?.let {
+            it?.let {exercises ->
                 if (it.isNotEmpty()) {
                     exerciseViewPager.adapter =
                         ExerciseAdapter(
                             requireActivity() as AppCompatActivity,
-                            it
+                            exercises
                         )
+                    exerciseViewPager.visibility = View.VISIBLE
                 }
             }
         })
@@ -67,5 +74,11 @@ class ExerciseControlFragment : Fragment() {
                 }
             }
         })
+
+        viewModel.navigateToResults.observe(viewLifecycleOwner, Observer {
+            this.findNavController().navigate(R.id.action_exerciseControlFragment_to_exerciseResultFragment)
+        })
+
+
     }
 }
