@@ -2,14 +2,11 @@ package com.example.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.data.database.models.CourseDbModel
-import com.example.data.database.models.LessonDbModel
-import com.example.data.database.models.TopicDbModel
-import com.example.data.database.models.UserDbModel
+import com.example.data.database.models.*
 
 @Database(
-    entities = [UserDbModel::class, CourseDbModel::class, TopicDbModel::class, LessonDbModel::class],
-    version = 8,
+    entities = [UserDbModel::class, CourseDbModel::class, TopicDbModel::class, LessonDbModel::class, GlossaryWordDbModel::class],
+    version = 9,
     exportSchema = false
 )
 abstract class AquaLangDatabase : RoomDatabase() {

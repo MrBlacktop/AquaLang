@@ -8,6 +8,7 @@
         <item name="cardBackgroundColor">@color/primaryColor</item>
         <item name="extendedFloatingActionButtonStyle">@color/primaryColor</item>
         <item name="android:textColorSecondary">@color/primaryTextColor</item>
+        <item name="floatingActionButtonStyle">@color/primaryTextColor</item>
         <item name="colorSecondary">@color/secondaryColor</item>
 
 

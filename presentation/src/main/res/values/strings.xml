@@ -37,4 +37,17 @@
     <string name="well_done">Well done!</string>
     <string name="you_scored">You scored</string>
     <string name="out_of">out of</string>
+    <string name="app_nikita_averyanov">App: Nikita Averyanov</string>
+    <string name="server_sofya_kopalova">Server: Sofya Kopalova</string>
+    <string name="thanks_to_our_friend_for_the_logo">Thanks to our friend for the logo</string>
+    <string name="translation_example">Repository - репозиторий</string>
+    <string name="repository">Repository</string>
+    <string name="repository_ru">репозиторий</string>
+    <string name="repository_definition">a place where something is stored in large quantities</string>
+    <string name="dash">-</string>
+    <string name="word">Word</string>
+    <string name="translation">Translation</string>
+    <string name="definition">Definition</string>
+    <string name="add">Add</string>
+    <string name="user_editing_not_yet_available">User editing is not available yet</string>
 </resources>

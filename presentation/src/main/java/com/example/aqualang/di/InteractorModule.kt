@@ -1,11 +1,6 @@
 package com.example.aqualang.di
 
-import com.example.data.repositories.CourseRepositoryImpl
-import com.example.data.repositories.UserRepositoryImpl
-import com.example.domain.interactors.CourseInteractor
-import com.example.domain.interactors.LessonInteractor
-import com.example.domain.interactors.TopicInteractor
-import com.example.domain.interactors.UserInteractor
+import com.example.domain.interactors.*
 import com.example.domain.repositories.*
 import com.example.domain.useCases.LoadExercisesUseCase
 import dagger.Module
@@ -51,5 +46,14 @@ class InteractorModule {
         userRepository: UserRepository
     ): LoadExercisesUseCase {
         return LoadExercisesUseCase(exerciseRepository, userRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesGlossaryInteractor(
+        glossaryRepository: GlossaryRepository,
+        userRepository: UserRepository
+    ): GlossaryInteractor {
+        return GlossaryInteractor(glossaryRepository, userRepository)
     }
 }

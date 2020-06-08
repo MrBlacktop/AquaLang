@@ -34,7 +34,13 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun providesExerciseRepository(exerciseRepositoryImpl: ExerciseRepositoryImpl): ExerciseRepository{
+    fun providesExerciseRepository(exerciseRepositoryImpl: ExerciseRepositoryImpl): ExerciseRepository {
         return exerciseRepositoryImpl
+    }
+
+    @Singleton
+    @Provides
+    fun providesGlossaryRepository(glossaryRepositoryImpl: GlossaryRepositoryImpl): GlossaryRepository {
+        return glossaryRepositoryImpl
     }
 }

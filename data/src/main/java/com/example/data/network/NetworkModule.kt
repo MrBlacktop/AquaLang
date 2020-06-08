@@ -44,4 +44,9 @@ class NetworkModule {
     @Provides
     fun providesExerciseApiService(retrofit: Retrofit): ExerciseApiService =
         retrofit.create(ExerciseApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun providesGlossaryApiService(retrofit: Retrofit): GlossaryApiService =
+        retrofit.create(GlossaryApiService::class.java)
 }

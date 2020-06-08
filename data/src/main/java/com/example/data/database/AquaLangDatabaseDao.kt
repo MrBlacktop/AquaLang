@@ -1,10 +1,7 @@
 package com.example.data.database
 
 import androidx.room.*
-import com.example.data.database.models.CourseDbModel
-import com.example.data.database.models.LessonDbModel
-import com.example.data.database.models.TopicDbModel
-import com.example.data.database.models.UserDbModel
+import com.example.data.database.models.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -46,4 +43,13 @@ interface AquaLangDatabaseDao {
 
     @Query("select * from lessons where id =:lessonId")
     fun getLesson(lessonId: Int): LessonDbModel?
+
+    @Query("select * from glossary")
+    fun getGlossary(): Flow<List<GlossaryWordDbModel>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertGlossary(glossary: List<GlossaryWordDbModel>)
+
+    @Delete
+    fun deleteWord(word: GlossaryWordDbModel)
 }

@@ -5,6 +5,8 @@ import com.example.aqualang.education.coursesList.CoursesListFragment
 import com.example.aqualang.education.exercises.ExerciseComponent
 import com.example.aqualang.education.exercises.SingleOptionExerciseFragment
 import com.example.aqualang.education.exercises.controlFragment.ExerciseControlFragment
+import com.example.aqualang.education.glossary.GlossaryFragment
+import com.example.aqualang.education.glossary.word.WordFragment
 import com.example.aqualang.education.lesson.LessonFragment
 import com.example.aqualang.education.lessonList.LessonListFragment
 import com.example.aqualang.login.LoginComponent
@@ -26,4 +28,6 @@ interface AppComponent {
     fun inject(userFragment: UserFragment)
     fun inject(lessonListFragment: LessonListFragment)
     fun inject(lessonFragment: LessonFragment)
+    fun inject(glossaryFragment: GlossaryFragment)
+    fun inject(wordFragment: WordFragment)
 }
