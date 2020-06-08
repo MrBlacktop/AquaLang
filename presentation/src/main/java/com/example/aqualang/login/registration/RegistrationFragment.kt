@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.aqualang.AquaLangApplication
 import com.example.aqualang.R
 import com.example.aqualang.databinding.RegistrationFragmentBinding
+import com.example.aqualang.login.LoginActivity
 import javax.inject.Inject
 
 class RegistrationFragment : Fragment() {
@@ -29,7 +30,7 @@ class RegistrationFragment : Fragment() {
 
         val binding = RegistrationFragmentBinding.inflate(inflater, container, false)
 
-        (requireActivity().application as AquaLangApplication).appComponent.inject(this)
+        (requireActivity() as LoginActivity).loginComponent.inject(this)
 
         viewModel = ViewModelProvider(this,viewModelFactory).get(RegistrationViewModel::class.java)
 

@@ -30,8 +30,11 @@ class ExerciseControlFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (requireActivity().application as AquaLangApplication).appComponent.inject(this)
-        val lessonId = (requireActivity() as ExerciseActivity).lessonId
+        val activity = requireActivity() as ExerciseActivity
+
+        activity.exerciseComponent.inject(this)
+
+        val lessonId = activity.lessonId
 
         val viewModelFactory = ExerciseControlViewModelFactory(useCase, lessonId)
         viewModel =

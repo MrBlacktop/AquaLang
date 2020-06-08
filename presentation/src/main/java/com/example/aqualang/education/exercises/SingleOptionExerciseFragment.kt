@@ -37,7 +37,7 @@ class SingleOptionExerciseFragment : Fragment() {
     ): View? {
         val binding = FragmentSingleOptionExerciseBinding.inflate(inflater, container, false)
 
-        (requireActivity().application as AquaLangApplication).appComponent.inject(this)
+        (requireActivity() as ExerciseActivity).exerciseComponent.inject(this)
 
         val viewModelFactory = ExerciseControlViewModelFactory(loadExercisesUseCase, null)
         viewModel = ViewModelProvider(

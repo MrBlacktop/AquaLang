@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface TopicApiService {
-    @GET("courses/{id}/get_topics/")
+    @GET("courses/{id}/topics/")
     fun getAllCourseTopicsAsync(@Path("id") id:Int): Deferred<List<TopicWebModel>>
 }

@@ -51,9 +51,6 @@ class LoginViewModel(private val userInteractor: UserInteractor) : ViewModel() {
         _navigateToRegistration.value = true
     }
 
-    fun doneNavigationToCoursesList() {
-        _navigateToCoursesList.value = null
-    }
 
     fun doneNavigatingToRegistration() {
         _navigateToRegistration.value = null

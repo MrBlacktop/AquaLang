@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.aqualang.AquaLangApplication
 import com.example.aqualang.R
 import com.example.aqualang.databinding.LoginFragmentBinding
+import com.example.aqualang.login.LoginActivity
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
@@ -26,7 +27,7 @@ class LoginFragment : Fragment() {
     ): View? {
         val binding = LoginFragmentBinding.inflate(inflater,container,false)
 
-        (requireActivity().application as AquaLangApplication).appComponent.inject(this)
+        (requireActivity() as LoginActivity).loginComponent.inject(this)
 
 
         viewModel = ViewModelProvider(this,viewModelFactory).get(LoginViewModel::class.java)
@@ -44,7 +45,6 @@ class LoginFragment : Fragment() {
                 if (it) {
                     this.findNavController()
                         .navigate(R.id.action_loginFragment2_to_mainActivity)
-//                    viewModel.doneNavigationToCoursesList()
                     requireActivity().finish()
 
                 }

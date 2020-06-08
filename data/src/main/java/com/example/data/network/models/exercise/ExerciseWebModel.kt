@@ -9,7 +9,6 @@ import com.squareup.moshi.JsonClass
 data class ExerciseWebModel(
     var id: Int,
     var title: String,
-    var description: String,
     var content: String,
     var type: Int,
     @Json(name = "lesson")
