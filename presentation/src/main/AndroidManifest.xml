@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.LoginActivity" android:theme="@style/NoActionBarStyle"></activity>
+        <activity android:name=".education.exercises.ExerciseActivity"></activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:theme="@style/NoActionBarStyle" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

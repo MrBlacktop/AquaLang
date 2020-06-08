@@ -15,4 +15,9 @@
         android:enabled="true"
         android:icon="@drawable/baseline_account_circle_24"
         android:title="@string/user" />
+    <item
+        android:id="@+id/aboutFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_help_24"
+        android:title="@string/about" />
 </menu>

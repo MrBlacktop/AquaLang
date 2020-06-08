@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.aqualang.AquaLangApplication
 import com.example.aqualang.R
+import com.example.aqualang.education.exercises.ExerciseActivity
 import com.example.aqualang.education.exercises.controlFragment.viewPager.ExerciseAdapter
 import com.example.domain.useCases.LoadExercisesUseCase
 import kotlinx.android.synthetic.main.exercise_control_fragment.*
@@ -30,7 +31,7 @@ class ExerciseControlFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (requireActivity().application as AquaLangApplication).appComponent.inject(this)
-        val lessonId = requireArguments().getInt(LESSON_ID)
+        val lessonId = (requireActivity() as ExerciseActivity).lessonId
 
         val viewModelFactory = ExerciseControlViewModelFactory(useCase, lessonId)
         viewModel =
@@ -63,13 +64,5 @@ class ExerciseControlFragment : Fragment() {
                 }
             }
         })
-    }
-
-    companion object {
-        private const val LESSON_ID = "LESSON_ID"
-
-        fun createBundleWithId(lessonId: Int): Bundle {
-            return bundleOf(LESSON_ID to lessonId)
-        }
     }
 }

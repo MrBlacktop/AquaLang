@@ -67,27 +67,8 @@
             android:name="lessonId"
             app:argType="integer" />
         <action
-            android:id="@+id/action_lessonFragment_to_exerciseControlFragment"
-            app:destination="@id/exerciseControlFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/exerciseControlFragment"
-        android:name="com.example.aqualang.education.exercises.controlFragment.ExerciseControlFragment"
-        android:label="exercise_control_fragment"
-        tools:layout="@layout/exercise_control_fragment" >
-        <argument android:name="lessonId" />
-        <action
-            android:id="@+id/action_exerciseControlFragment_to_exerciseResultFragment"
-            app:destination="@id/exerciseResultFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/exerciseResultFragment"
-        android:name="com.example.aqualang.education.exercises.result.ExerciseResultFragment"
-        android:label="exercise_result_fragment"
-        tools:layout="@layout/exercise_result_fragment" >
-        <action
-            android:id="@+id/action_exerciseResultFragment_to_coursesListFragment"
-            app:destination="@id/coursesListFragment" />
+            android:id="@+id/action_lessonFragment_to_exerciseActivity"
+            app:destination="@id/exerciseActivity" />
     </fragment>
     <fragment
         android:id="@+id/glossaryFragment"
@@ -99,4 +80,9 @@
         android:name="com.example.aqualang.login.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/exerciseActivity"
+        android:name="com.example.aqualang.education.exercises.ExerciseActivity"
+        android:label="activity_exercise"
+        tools:layout="@layout/activity_exercise" />
 </navigation>

@@ -1,22 +1,19 @@
 package com.example.aqualang.education.lesson
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.Html
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aqualang.AquaLangApplication
 import com.example.aqualang.R
 import com.example.aqualang.databinding.LessonFragmentBinding
-import com.example.aqualang.education.exercises.controlFragment.ExerciseControlFragment
+import com.example.aqualang.education.exercises.ExerciseActivity
 import com.example.domain.interactors.LessonInteractor
-import kotlinx.android.synthetic.main.lesson_fragment.*
 import javax.inject.Inject
 
 class LessonFragment : Fragment() {
@@ -57,8 +54,8 @@ class LessonFragment : Fragment() {
             it?.let {
                 if (it) {
                     this.findNavController().navigate(
-                        R.id.action_lessonFragment_to_exerciseControlFragment,
-                        ExerciseControlFragment.createBundleWithId(viewModel.lesson.id)
+                        R.id.action_lessonFragment_to_exerciseActivity,
+                        ExerciseActivity.createBundleWithId(viewModel.lesson.id)
                     )
                     viewModel.doneNavigationToExercises()
                 }

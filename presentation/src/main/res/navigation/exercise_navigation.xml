@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/exercise_navigation"
+    app:startDestination="@id/exerciseControlFragment">
+
+    <fragment
+        android:id="@+id/exerciseControlFragment"
+        android:name="com.example.aqualang.education.exercises.controlFragment.ExerciseControlFragment"
+        android:label="exercise_control_fragment"
+        tools:layout="@layout/exercise_control_fragment" >
+        <action
+            android:id="@+id/action_exerciseControlFragment_to_exerciseResultFragment"
+            app:destination="@id/exerciseResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseResultFragment"
+        android:name="com.example.aqualang.education.exercises.result.ExerciseResultFragment"
+        android:label="exercise_result_fragment"
+        tools:layout="@layout/exercise_result_fragment" >
+        <action
+            android:id="@+id/action_exerciseResultFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.aqualang.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
