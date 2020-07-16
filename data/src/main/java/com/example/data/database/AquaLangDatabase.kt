@@ -6,7 +6,7 @@ import com.example.data.database.models.*
 
 @Database(
     entities = [UserDbModel::class, CourseDbModel::class, TopicDbModel::class, LessonDbModel::class, GlossaryWordDbModel::class],
-    version = 9,
+    version = 10,
     exportSchema = false
 )
 abstract class AquaLangDatabase : RoomDatabase() {

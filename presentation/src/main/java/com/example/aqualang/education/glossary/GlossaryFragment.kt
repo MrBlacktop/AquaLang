@@ -70,7 +70,7 @@ class GlossaryFragment : Fragment() {
             it?.let {
                 if (it) {
                     Toast.makeText(context, "Network error", Toast.LENGTH_LONG).show()
-                    viewModel.showNetworkErrorToast
+                    viewModel.doneShowingErrorToast()
                 }
             }
         })

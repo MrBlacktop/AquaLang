@@ -26,13 +26,13 @@ class GlossaryViewModel(private val glossaryInteractor: GlossaryInteractor) : Vi
     }
 
     private fun sync() {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 glossaryInteractor.sync()
+            } catch (e: Exception) {
+                Log.e("GlossaryViewModel", e.message ?: "Unknown error")
+                _showNetworkErrorToast.value = true
             }
-        } catch (e: Exception) {
-            Log.e("GlossaryViewModel", e.message ?: "Unknown error")
-            _showNetworkErrorToast.value = true
         }
     }
 
@@ -41,13 +41,14 @@ class GlossaryViewModel(private val glossaryInteractor: GlossaryInteractor) : Vi
     }
 
     fun deleteWord(word: GlossaryWord) {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 glossaryInteractor.deleteWord(word)
+
+            } catch (e: Exception) {
+                Log.e("GlossaryViewModel", e.message ?: "Unknown error")
+                _showNetworkErrorToast.value = true
             }
-        } catch (e: Exception) {
-            Log.e("GlossaryViewModel", e.message ?: "Unknown error")
-            _showNetworkErrorToast.value = true
         }
     }
 

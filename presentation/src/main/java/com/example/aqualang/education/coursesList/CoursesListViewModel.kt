@@ -31,15 +31,6 @@ class CoursesListViewModel(
 
     init {
         checkIfUserLoggedIn()
-//        sync()
-    }
-
-    fun doneNavigatingToLogin() {
-        _navigateToLogin.value = null
-    }
-
-    fun doneShowingNetworkErrorToast(){
-        _showNetworkError.value = null
     }
 
     private fun checkIfUserLoggedIn() {
@@ -52,14 +43,14 @@ class CoursesListViewModel(
     }
 
     private fun sync() {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 loadCoursesUseCase.sync()
-            }
-        } catch (e: Exception) {
-            Log.e("CourseListViewModel", e.message ?: "unknown error")
-            _showNetworkError.value = true
-        }
 
+            } catch (e: Exception) {
+                Log.e("CourseListViewModel", e.message ?: "unknown error")
+                _showNetworkError.value = true
+            }
+        }
     }
 }

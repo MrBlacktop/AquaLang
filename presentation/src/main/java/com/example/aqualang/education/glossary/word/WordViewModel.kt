@@ -25,14 +25,15 @@ class WordViewModel(private val glossaryInteractor: GlossaryInteractor) : ViewMo
         get() = _showNetworkErrorToast
 
     fun addButtonClicked() {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 glossaryInteractor.addWord(word)
                 _navigateToGlossary.value = true
+
+            } catch (e: Exception) {
+                Log.e("WordViewModel", e.message ?: "Unknown error")
+                _showNetworkErrorToast.value = true
             }
-        }catch (e:Exception){
-            Log.e("WordViewModel", e.message ?: "Unknown error")
-            _showNetworkErrorToast.value = true
         }
     }
 
@@ -40,7 +41,7 @@ class WordViewModel(private val glossaryInteractor: GlossaryInteractor) : ViewMo
         _navigateToGlossary.value = null
     }
 
-    fun doneShowingErrorToast(){
+    fun doneShowingErrorToast() {
         _showNetworkErrorToast.value = null
     }
 }

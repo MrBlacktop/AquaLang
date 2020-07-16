@@ -44,15 +44,15 @@ class ExerciseControlViewModel(
     }
 
     private fun loadExercises() {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 lessonId?.let {
                     exercises.value = loadExercisesUseCase.loadExercises(it)
                 }
+            } catch (e: Exception) {
+                Log.e("ExerciseControlViewModel", e.message ?: "unknown error")
+                _showNetworkErrorToast.value = true
             }
-        } catch (e: Exception) {
-            Log.e("ExerciseControlViewModel", e.message ?: "unknown error")
-            _showNetworkErrorToast.value = true
         }
     }
 
@@ -60,11 +60,7 @@ class ExerciseControlViewModel(
         _showNetworkErrorToast.value = null
     }
 
-    fun doneNavigationToResults(){
-        _navigateToResults.value = null
-    }
-
-    fun sendAnswers(){
+    fun sendAnswers() {
         uiScope.launch {
             loadExercisesUseCase.sendResults(submittedAnswers)
         }

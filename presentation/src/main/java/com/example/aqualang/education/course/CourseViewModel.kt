@@ -40,40 +40,41 @@ class CourseViewModel(
     }
 
     private fun sync() {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 topicInteractor.sync(courseId)
+            } catch (e: Exception) {
+                Log.e("CourseViewModel - Topic", e.message ?: "unknown error")
+                _showNetworkErrorMessage.value = true
             }
-        } catch (e: Exception) {
-            Log.e("CourseViewModel - Topic", e.message ?: "unknown error")
-            _showNetworkErrorMessage.value = true
         }
     }
 
     fun subscribeButtonClicked() {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 val result = courseInteractor.subscribe(course)
 
-                if(result) _courseIsActive.value = course.isActive
+                if (result) _courseIsActive.value = course.isActive
+
+            } catch (e: Exception) {
+                Log.e("CourseViewModel - Topic", e.message ?: "unknown error")
+                _showNetworkErrorMessage.value = true
             }
-        } catch (e: Exception) {
-            Log.e("CourseViewModel - Topic", e.message ?: "unknown error")
-            _showNetworkErrorMessage.value = true
         }
     }
 
     fun unsubscribeButtonClicked() {
-        try {
-            uiScope.launch {
+        uiScope.launch {
+            try {
                 val result = courseInteractor.unsubscribe(course)
 
-                if(result) _courseIsActive.value = course.isActive
-            }
+                if (result) _courseIsActive.value = course.isActive
 
-        } catch (e: Exception) {
-            Log.e("CourseViewModel - Topic", e.message ?: "unknown error")
-            _showNetworkErrorMessage.value = true
+            } catch (e: Exception) {
+                Log.e("CourseViewModel - Topic", e.message ?: "unknown error")
+                _showNetworkErrorMessage.value = true
+            }
         }
     }
 

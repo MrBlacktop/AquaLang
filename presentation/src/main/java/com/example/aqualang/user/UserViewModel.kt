@@ -24,8 +24,4 @@ class UserViewModel(private val userInteractor: UserInteractor) : ViewModel() {
             _navigateToLogin.value = true
         }
     }
-
-    fun doneNavigationToLogin(){
-        _navigateToLogin.value = null
-    }
 }
